@@ -25,14 +25,14 @@ const MainArticles: React.FC = () => {
         <section id="news1" className="lg:col-span-2 space-y-6">
           <article className="space-y-3">
             <a href="#" className="text-xl font-bold hover:underline block">
-              Officials: Over 2,600 rescued from flooded Ukrainian-controlled areas of Kherson
+              Universal Music Group announces the signing of rapper Ish Kevin.
             </a>
 
             <div className="relative">
               <img
-                src="https://media.cnn.com/api/v1/images/stellar/prod/97ff8560-8c09-4bfb-8d40-86f8ea671d18.jpg?c=16x9&q=h_720,w_1280,c_fill"
-                className="w-full object-cover rounded"
-                alt="kherson"
+                src="https://www.igihe.com/local/cache-vignettes/L480xH600/ish_kevin_yashyize_hanze_album_ye_ya_mbere-72b26.jpg?1714988269"
+                className="w-full h-120 object-cover rounded"
+                alt="Ish Kevin"
               />
               {badgeLive}
             </div>
