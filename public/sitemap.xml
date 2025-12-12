@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Home -->
+  <url>
+    <loc>https://newtimeafrica.com/</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Africa -->
+  <url>
+    <loc>https://newtimeafrica.com/africa</loc>
+    <changefreq>hourly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Europe -->
+  <url>
+    <loc>https://newtimeafrica.com/europe</loc>
+    <changefreq>hourly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Sports -->
+  <url>
+    <loc>https://newtimeafrica.com/sports</loc>
+    <changefreq>hourly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Politics -->
+  <url>
+    <loc>https://newtimeafrica.com/politics</loc>
+    <changefreq>hourly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Style -->
+  <url>
+    <loc>https://newtimeafrica.com/style</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Travel -->
+  <url>
+    <loc>https://newtimeafrica.com/travel</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Business -->
+  <url>
+    <loc>https://newtimeafrica.com/business</loc>
+    <changefreq>hourly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Opinion -->
+  <url>
+    <loc>https://newtimeafrica.com/opinion</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Health -->
+  <url>
+    <loc>https://newtimeafrica.com/health</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Video -->
+  <url>
+    <loc>https://newtimeafrica.com/video</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Entertainment -->
+  <url>
+    <loc>https://newtimeafrica.com/entertainment</loc>
+    <changefreq>hourly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+</urlset>
