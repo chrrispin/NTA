@@ -6,7 +6,7 @@ const Politics: React.FC = () => {
   return (
     <div>
       <Trends />
-      <MainArticles />
+      <MainArticles pageFilter="Politics" />
       {/* You can customize content specific to Africa here */}
     </div>
   );

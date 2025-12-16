@@ -17,6 +17,12 @@ import Opinion from "./pages/Opinion";
 import Health from "./pages/Health";
 import Entertainment from "./pages/Entertainment";
 import Business from "./pages/Business";
+import ArticleDetail from "./pages/ArticleDetail";
+
+// Admin pages
+import Admin from "./pages/Admin";
+import AdminArticles from "./pages/AdminArticles";
+import AdminArticleForm from "./pages/AdminArticleForm";
 
 export default function App() {
   return (
@@ -38,8 +44,14 @@ export default function App() {
           <Route path="/entertainment" element={<Entertainment />} />
           <Route path="/style" element={<Style />} />
           <Route path="/travel" element={<Travel />} />
-          <Route path="/video" element={<Video />} /> */
-          {/* Add more routes as needed */}
+          <Route path="/video" element={<Video />} />
+          <Route path="/article/:slug" element={<ArticleDetail />} />
+
+          {/* Admin routes */}
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/admin/articles" element={<AdminArticles />} />
+          <Route path="/admin/articles/new" element={<AdminArticleForm />} />
+          <Route path="/admin/articles/:id/edit" element={<AdminArticleForm />} />
         </Routes>
       </main>
 

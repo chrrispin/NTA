@@ -6,7 +6,7 @@ const Sports: React.FC = () => {
   return (
     <div>
       <Trends />
-      <MainArticles />
+      <MainArticles pageFilter="Sports" />
       {/* You can customize content specific to Africa here */}
     </div>
   );

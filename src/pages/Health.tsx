@@ -6,7 +6,7 @@ const Health: React.FC = () => {
   return (
     <div>
       <Trends />
-      <MainArticles />
+      <MainArticles pageFilter="Health" />
       {/* You can customize content specific to Africa here */}
     </div>
   );

@@ -44,7 +44,7 @@ const defaultArticles: Article[] = [
       "https://media.cnn.com/api/v1/images/stellar/prod/97ff8560-8c09-4bfb-8d40-86f8ea671d18.jpg?c=16x9&q=h_720,w_1280,c_fill",
     summary:
       "Water level at the Nova Kakhovka reservoir ‘continues to decline,’ minister says, after collapse of major dam in southern Ukraine",
-    // is_live: true,
+    is_live: true,
     isTrending: true,
     isHot: true,
     isVideoSpotlight: true,
@@ -90,7 +90,7 @@ const defaultArticles: Article[] = [
     section: "news1",
     title: "Pittsburgh synagogue gunman found guilty on all 63 charges",
     image_url:
-      "https://media.cnn.com/api/v1/images/stellar/prod/230615155632-01-pittsburgh-synagogue-trial-0615-bowers.jpg",
+      "https://media.cnn.com/api/v1/images/stellar/prod/230615155632-01-pittsburgh-synagogue-trial-0615-bowers.jpg?c=16x9&q=h_438,w_780,c_fill",
     isTrending: true,
     roleType: "paragraph",
     subLinks: [
@@ -106,7 +106,7 @@ const defaultArticles: Article[] = [
     section: "news2",
     title: "What scientists say keeps mosquitoes at bay",
     image_url:
-      "https://media.cnn.com/api/v1/images/stellar/prod/230622192324-01-how-repel-mosquitos-scientifically-wellness-scn.jpg",
+      "https://media.cnn.com/api/v1/images/stellar/prod/230622192324-01-how-repel-mosquitos-scientifically-wellness-scn.jpg?c=16x9&q=h_438,w_780,c_fill",
     isHot: true,
     roleType: "generic",
     subLinks: [
@@ -119,7 +119,7 @@ const defaultArticles: Article[] = [
     section: "news2",
     title: "‘Everybody loves Americans’: Why US tourists are a hot commodity",
     image_url:
-      "https://media.cnn.com/api/v1/images/stellar/prod/230622161002-01-us-tourists-hot-commodity-restricted.jpg",
+      "https://media.cnn.com/api/v1/images/stellar/prod/230622161002-01-us-tourists-hot-commodity-restricted.jpg?c=16x9&q=h_438,w_780,c_fill",
     isHot: true,
     roleType: "link",
     subLinks: [
@@ -147,7 +147,7 @@ const defaultArticles: Article[] = [
     section: "news3",
     title: "Lost for decades, these 19th-century photo portraits tell a quietly radical love story",
     image_url:
-      "https://media.cnn.com/api/v1/images/stellar/prod/230623142929-05-marie-heg-bolette-berg-untold-art-history.jpg",
+      "https://media.cnn.com/api/v1/images/stellar/prod/230623142929-05-marie-heg-bolette-berg-untold-art-history.jpg?c=16x9&q=h_438,w_780,c_fill",
     roleType: "focus",
     subLinks: [
       { id: "21a", title: "Curious whale follows kayak as Australia revels in bumper annual humpback count", isVideo: true },
@@ -161,45 +161,8 @@ const defaultArticles: Article[] = [
     section: "news4",
     title: "Live updates on a huge day for the US economy: Housing, GDP, jobs and Bidenomics",
     image_url:
-      "https://media.cnn.com/api/v1/images/stellar/prod/230627152404-nyse-file-0609.jpg",
+      "https://media.cnn.com/api/v1/images/stellar/prod/230627152404-nyse-file-0609.jpg?c=16x9&q=h_438,w_780,c_fill",
     is_live: true,
-    isYoutubePick: true,
-    roleType: "live",
-    subLinks: [
-      { id: "30a", title: "Flight problems mostly over — except at United" },
-      { id: "30b", title: "The Fed is secretly stress testing the US economy against nightmare scenarios" },
-    ],
-  },
-  {
-    id: 30,
-    section: "news4",
-    title: "Live updates on a huge day for the US economy: Housing, GDP, jobs and Bidenomics",
-    image_url:
-      "https://media.cnn.com/api/v1/images/stellar/prod/230627152404-nyse-file-0609.jpg",
-    is_live: true,
-    isYoutubePick: true,
-    roleType: "live",
-    subLinks: [
-      { id: "30a", title: "Flight problems mostly over — except at United" },
-    ],
-  },
-
-  {
-    id: 31,
-    section: "news4",
-    title: "The world’s biggest cruise ship is almost ready",
-    image_url:
-      "https://media.cnn.com/api/v1/images/stellar/prod/230627100639-icon-of-the-sea-card.jpg",
-    isYoutubePick: true,
-    roleType: "ads",
-  },
-  {
-    id: 30,
-    section: "news4",
-    title: "Live updates on a huge day for the US economy: Housing, GDP, jobs and Bidenomics",
-    image_url:
-      "https://media.cnn.com/api/v1/images/stellar/prod/230627152404-nyse-file-0609.jpg",
-    is_live: false,
     isYoutubePick: true,
     roleType: "live",
     subLinks: [
@@ -213,7 +176,7 @@ const defaultArticles: Article[] = [
     section: "news4",
     title: "The world’s biggest cruise ship is almost ready",
     image_url:
-      "https://media.cnn.com/api/v1/images/stellar/prod/230627100639-icon-of-the-sea-card.jpg",
+      "https://media.cnn.com/api/v1/images/stellar/prod/230627100639-icon-of-the-sea-card.jpg?c=16x9&q=h_438,w_780,c_fill",
     isYoutubePick: true,
     roleType: "ads",
   },
@@ -221,9 +184,8 @@ const defaultArticles: Article[] = [
   // news5/news6/news7 small sets - use placeholders where appropriate
   { id: 40, section: "news5", title: "Caroline Wozniacki plans return to tennis at US Open", image_url: null },
   { id: 41, section: "news5", title: "Archaeologists find a 3,000-year-old sword so well preserved it’s still gleaming", image_url: null },
-  { id: 41, section: "news5", title: "Archaeologists find a 3,000-year-old sword so well preserved it’s still gleaming", image_url: null },
   { id: 50, section: "news6", title: "Rep. Alexandria Ocasio-Cortez supports Biden’s reelection bid", image_url: null },
-  { id: 50, section: "news6", title: "Rep. Alexandria Ocasio-Cortez supports Biden’s reelection bid", image_url: null },
+  { id: 60, section: "news7", title: "Photos You Should See", image_url: null, isAudioPick: true },
 ];
 
 const truncate = (text: string | undefined | null, len = 120) => {
@@ -232,9 +194,9 @@ const truncate = (text: string | undefined | null, len = 120) => {
 };
 
 const BadgeLive: React.FC = () => (
-  <div className="absolute top-26 left-0 bg-white flex items-center  justify-between p-1.5 w-22">
+  <div className="absolute bottom-0 left-0 bg-white flex items-center justify-between p-1.5 w-32">
     <i className="bi bi-dot text-red-600 text-3xl -m-3" />
-    <b className="text-xs text-red-500">LIVE UPDATES</b>
+    <b className="text-xs">LIVE UPDATES</b>
   </div>
 );
 const MainArticles: React.FC = () => {
@@ -449,7 +411,7 @@ const MainArticles: React.FC = () => {
             </Link>
 
             {news1[0].subLinks?.length ? (
-              <ul className="list-disc pl-5 space-y-1 text-sm ">
+              <ul className="list-disc pl-5 space-y-1 text-sm">
                 {news1[0].subLinks.map((s) => (
                   <li key={s.id}>
                     {s.url ? (
@@ -467,7 +429,7 @@ const MainArticles: React.FC = () => {
         )}
 
         {/* secondary two-column grid */}
-        <article className="grid grid-cols-1 md:grid-cols-2  gap-4">
+        <article className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {news1.slice(1, 3).map((a) => (
             <div key={a.id} className="space-y-3">
               <div className="relative">
@@ -502,10 +464,10 @@ const MainArticles: React.FC = () => {
         </article>
 
         {/* SArticle list / stacked items */}
-        <article className="SArticle space-y-3 text-green-500">
+        <article className="SArticle space-y-3">
           {news1.slice(3).map((a) => (
             <div key={a.id} className="space-y-2">
-              <img src={a.image_url ?? PLACEHOLDER} alt={a.title} className="w-full h-150 md:w-170 rounded object-cover" />
+              <img src={a.image_url ?? PLACEHOLDER} alt={a.title} className="w-full md:w-1/2 rounded object-cover" />
               <a href="#" className="font-bold hover:underline block">
                 {a.title}
               </a>
@@ -610,21 +572,21 @@ const MainArticles: React.FC = () => {
             { id: "w2", title: "Orca pod attacks Ocean Race boats", url: "#", image: null },
           ]}
         />
-        {/* <SmallList
+        <SmallList
           title="Photos You Should See"
           items={[
             { id: "p1", title: "Close-up images of insects", url: "#", image: null },
             { id: "p2", title: "Most delicious Turkish dishes", url: "#", image: null },
             { id: "p3", title: "'Flying Shark' photo changed this man's life", url: "#", image: null },
           ]}
-        /> */}
+        />
       </aside>
 
       {/* featured / lower sections spanning full width */}
       <section id="news4" className="lg:col-span-3 mt-6 space-y-6">
         <h2 className="text-xl font-bold">Featured Sections</h2>
 
-        <article className="grid md:grid-cols-5 gap-6">
+        <article className="grid md:grid-cols-3 gap-6">
           {news4.map((a) => (
             <div key={a.id} className="relative">
               <img src={a.image_url ?? PLACEHOLDER} alt={a.title} className="rounded object-cover w-full" />
@@ -664,34 +626,20 @@ const MainArticles: React.FC = () => {
         </section>
       )}
 
-      <section className="max-w-3xl mx-auto mt-6 flex grid-col-2">
-        <div className="flex flex-col md:flex-row bg-white rounded-lg shadow overflow-hidden">
-          {/* Image on the left */}
-          <div className="md:w-1/3">
-            <img
-              src={PLACEHOLDER}
-              alt="Sample article"
-              className="w-full h-full object-cover"
-            />
-          </div>
-
-            {/* Content on the right */}
-            <div className="md:w-2/3 p-6 flex flex-col justify-between">
-              <div>
-                <h2 className="text-xl font-bold text-gray-900 hover:underline">
-                  Example Article Title
-                </h2>
-                <p className="mt-2 text-gray-600 text-sm">
-                  This is a short excerpt or description of the article. It gives readers
-                  a preview of the content and encourages them to click through.
-                </p>
+      {news6.length > 0 && (
+        <section id="news6" className="lg:col-span-3 mt-6 space-y-6">
+          <article className="grid md:grid-cols-3 gap-6">
+            {news6.map((a) => (
+              <div key={a.id}>
+                <img src={a.image_url ?? PLACEHOLDER} alt={a.title} className="w-full rounded object-cover" />
+                <a href="#" className="font-bold block mt-2 hover:underline">
+                  {a.title}
+                </a>
               </div>
-              <div className="mt-4 text-xs text-gray-500">
-            {new Date().toLocaleDateString()}
-          </div>
-        </div>
-      </div>
-    </section>
+            ))}
+          </article>
+        </section>
+      )}
 
       {news7.length > 0 && (
   <section id="news7" className="lg:col-span-3 mt-6 space-y-6">
@@ -761,7 +709,7 @@ const MainArticles: React.FC = () => {
                     alt={a.title}
                     className="w-full h-full max-h-72 object-cover rounded"
                   />
-                  {/* {a.is_live && <BadgeLive />} */}
+                  {a.is_live && <BadgeLive />}
                 </div>
                 <a href="#" className="font-bold text-lg hover:underline block">
                   {a.title}
@@ -916,7 +864,7 @@ const MainArticles: React.FC = () => {
             <h2 className="text-xl font-bold uppercase tracking-wide">More News</h2>
             <span className="text-sm text-blue-600 hover:underline">See all</span>
           </div>
-          <div className="grid md:grid-cols-6 gap-6">
+          <div className="grid md:grid-cols-3 gap-6">
             {moreNews.map((a, idx) => (
               <article
                 key={`more-${a.id}-${idx}`}
@@ -928,7 +876,7 @@ const MainArticles: React.FC = () => {
                     alt={a.title}
                     className="w-full h-48 object-cover rounded"
                   />
-                  {/* {a.is_live && <BadgeLive />} */}
+                  {a.is_live && <BadgeLive />}
                 </div>
                 <a href="#" className="font-bold text-lg hover:underline block leading-snug">
                   {truncate(a.title, 120)}

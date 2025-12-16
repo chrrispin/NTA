@@ -6,7 +6,7 @@ const Video: React.FC = () => {
   return (
     <div>
       <Trends />
-      <MainArticles />
+      <MainArticles pageFilter="Video" />
       {/* You can customize content specific to Africa here */}
     </div>
   );

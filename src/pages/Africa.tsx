@@ -6,7 +6,7 @@ const Africa: React.FC = () => {
   return (
     <div>
       <Trends />
-      <MainArticles />
+      <MainArticles pageFilter="Africa" />
       {/* You can customize content specific to Africa here */}
     </div>
   );
