@@ -1,18 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { type Article, PLACEHOLDER } from "../data/defaultArticles";
-import BadgeLive from "./BadgeLive";
+import { defaultArticles, PLACEHOLDER } from "../../data/defaultArticles";
+import BadgeLive from "../shared/BadgeLive";
 
 const truncate = (text: string | undefined | null, len = 120) => {
   if (!text) return "";
   return text.length > len ? text.slice(0, len).trim() + "…" : text;
 };
 
-interface LeftMainSectionProps {
-  articles: Article[];
-}
-
-const LeftMainSection: React.FC<LeftMainSectionProps> = ({ articles }) => {
+const LeftMainSection: React.FC = () => {
+  // Hardcoded values - change these directly
+  const articles = defaultArticles;
   const news1 = articles.filter((a) => a.section === "news1");
   return (
     <section id="news1" className="lg:col-span-2 space-y-6">

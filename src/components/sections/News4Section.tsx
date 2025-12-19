@@ -1,12 +1,10 @@
 import React from "react";
-import { type Article, PLACEHOLDER } from "../data/defaultArticles";
-import BadgeLive from "./BadgeLive";
+import { defaultArticles, PLACEHOLDER } from "../../data/defaultArticles";
+import BadgeLive from "../shared/BadgeLive";
 
-interface News4SectionProps {
-  articles: Article[];
-}
-
-const News4Section: React.FC<News4SectionProps> = ({ articles }) => {
+const News4Section: React.FC = () => {
+  // Hardcoded values - change these directly
+  const articles = defaultArticles;
   const news4 = articles.filter((a) => a.section === "news4");
   return (
     <section id="news4" className="lg:col-span-3 mt-6 space-y-6">

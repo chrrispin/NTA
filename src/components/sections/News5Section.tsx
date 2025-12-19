@@ -1,11 +1,9 @@
 import React from "react";
-import { type Article, PLACEHOLDER } from "../data/defaultArticles";
+import { defaultArticles, PLACEHOLDER } from "../../data/defaultArticles";
 
-interface News5SectionProps {
-  articles: Article[];
-}
-
-const News5Section: React.FC<News5SectionProps> = ({ articles }) => {
+const News5Section: React.FC = () => {
+  // Hardcoded values - change these directly
+  const articles = defaultArticles;
   const news5 = articles.filter((a) => a.section === "news5");
   
   if (news5.length === 0) return null;

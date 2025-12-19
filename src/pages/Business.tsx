@@ -1,6 +1,6 @@
 import React from "react";
-import Trends from "../components/Trends";
-import MainArticles from "../components/MainArticles";
+import Trends from "../components/shared/Trends";
+import MainArticles from "../components/layout/MainArticles";
 
 const Business: React.FC = () => {
   return (

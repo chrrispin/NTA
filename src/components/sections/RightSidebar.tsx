@@ -1,17 +1,15 @@
 import React from "react";
-import SmallList from "./SmallList";
-import { type Article, PLACEHOLDER, defaultArticles } from "../data/defaultArticles";
+import SmallList from "../articles/SmallList";
+import { PLACEHOLDER, defaultArticles } from "../../data/defaultArticles";
 
 const truncate = (text: string | undefined | null, len = 120) => {
   if (!text) return "";
   return text.length > len ? text.slice(0, len).trim() + "…" : text;
 };
 
-interface RightSidebarProps {
-  articles: Article[];
-}
-
-const RightSidebar: React.FC<RightSidebarProps> = ({ articles }) => {
+const RightSidebar: React.FC = () => {
+  // Hardcoded values - change these directly
+  const articles = defaultArticles;
   const news1 = articles.filter((a) => a.section === "news1");
   const news2 = articles.filter((a) => a.section === "news2");
   const news3 = articles.filter((a) => a.section === "news3");
@@ -91,13 +89,7 @@ const RightSidebar: React.FC<RightSidebarProps> = ({ articles }) => {
       </section>
 
       {/* Additional small blocks */}
-      <SmallList
-        title="Watch it"
-        items={[
-          { id: "w1", title: "Alligator chases fisherman", url: "#", image: "https://i.ytimg.com/vi/k03te-F4FQY/maxresdefault.jpg" },
-          { id: "w2", title: "Orca pod attacks Ocean Race boats", url: "", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQe8Jm7Jxbf_OBxQi-6sDeZIIUqLK930b412A&s" },
-        ]}
-      />
+      <SmallList />
       {/* <SmallList
         title="Photos You Should See"
         items={[

@@ -1,5 +1,5 @@
 import React from "react";
-import { PLACEHOLDER } from "../data/defaultArticles";
+import { PLACEHOLDER } from "../../data/defaultArticles";
 
 const SampleArticleCard: React.FC = () => {
   return (
