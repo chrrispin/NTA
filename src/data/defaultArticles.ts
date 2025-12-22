@@ -3,6 +3,7 @@ type SubLink = {
   title: string;
   url?: string;
   isVideo?: boolean;
+  image_url?: string | null;
 };
 
 export type Article = {
@@ -84,7 +85,7 @@ export const defaultArticles: Article[] = [
       { id: "4c", title: "Video shows key Russian supply bridge knocked out by missile", isVideo: true },
     ],
   },
-
+  
   // news2 / sidebar items
   {
     id: 10,
@@ -94,8 +95,10 @@ export const defaultArticles: Article[] = [
     isHot: true,
     roleType: "generic",
     subLinks: [
-      { id: "10a", title: "Train derailment on Montana bridge sends multiple rail cars into the Yellowstone River" },
-      { id: "10b", title: "Orca pod attacks Ocean Race boats" },
+      { id: "10a", title: "Train derailment on Montana bridge sends multiple rail cars into the Yellowstone River",
+         image_url: "https://cowboystatedaily.imgix.net/train-derail-15-12-19-25.jpg" },
+      { id: "10b", title: "Orca pod attacks Ocean Race boats", 
+        image_url: "https://cdn.theoceanrace.com/images/m171610_crop169014_1024x576_proportional_1687380005B986.jpg" },
     ],
   },
   {
@@ -106,8 +109,12 @@ export const defaultArticles: Article[] = [
     isHot: true,
     roleType: "link",
     subLinks: [
-      { id: "11a", title: "These ordinary people became accidental stars thanks to this niche video genre" },
-      { id: "11b", title: "This country is 99% water. But the 1% is paradise" },
+      { id: "11a", title: "These ordinary people became accidental stars thanks to this niche video genre",
+        image_url: "https://m.media-amazon.com/images/M/MV5BZDUwYTBhYjMtYjRhNi00ZGQ0LWI1ZDMtZDg4ZjVhYmM5MGI5XkEyXkFqcGc@._V1_.jpg"
+       },
+      { id: "11b", title: "This country is 99% water. But the 1% is paradise", 
+        image_url: "https://media.cnn.com/api/v1/images/stellar/prod/230516112548-01-crossroads-maldives-aerial.jpg?c=original"
+       },
     ],
   },
 
@@ -120,9 +127,15 @@ export const defaultArticles: Article[] = [
     isHot: true,
     roleType: "images",
     subLinks: [
-      { id: "20a", title: "Fox News shuffles prime-time lineup in wake of Tucker Carlson firing and sagging ratings" },
-      { id: "20b", title: "Hollywood stars part of group taking 24% stake in F1 team" },
-      { id: "20c", title: "Rent is falling in America for the first time in years" },
+      { id: "20a", title: "Fox News shuffles prime-time lineup in wake of Tucker Carlson firing and sagging ratings",
+        image_url:"https://media.cnn.com/api/v1/images/stellar/prod/230626113836-jesse-watters-fox-file-restricted.jpg?c=original"
+      },
+      { id: "20b", title: "Hollywood stars part of group taking 24% stake in F1 team",
+        image_url:"https://i.dailymail.co.uk/1s/2023/06/26/07/72531583-0-image-a-26_1687761707254.jpg"
+       },
+      { id: "20c", title: "Rent is falling in America for the first time in years",
+        image_url:"https://assets2.cbsnewsstatic.com/hub/i/r/2018/12/05/19c05542-3abf-4e42-923e-26438908b500/thumbnail/1200x630/3998df38fd3ffe09adaac7a4e911d35c/gettyimages-607877802.jpg"
+       },
     ],
   },
   {
@@ -132,8 +145,12 @@ export const defaultArticles: Article[] = [
     image_url: "https://media.cnn.com/api/v1/images/stellar/prod/230623142929-05-marie-heg-bolette-berg-untold-art-history.jpg",
     roleType: "focus",
     subLinks: [
-      { id: "21a", title: "Curious whale follows kayak as Australia revels in bumper annual humpback count", isVideo: true },
-      { id: "21b", title: "Jacquemus' Versailles show was an ode to Princess Diana" },
+      { id: "21a", title: "Curious whale follows kayak as Australia revels in bumper annual humpback count", isVideo: true ,
+        image_url:"https://c.files.bbci.co.uk/1414/production/_130204150_p0fx9p4m.jpg"
+      },
+      { id: "21b", title: "Jacquemus' Versailles show was an ode to Princess Diana" ,
+        image_url:"https://media.cnn.com/api/v1/images/stellar/prod/230626150138-03-jacquemus-versailles-fashion-show.jpg?c=original"
+      },
     ],
   },
 
@@ -194,9 +211,14 @@ export const defaultArticles: Article[] = [
   },
 
   // news5/news6/news7 small sets
-  { id: 40, section: "news5", title: "Caroline Wozniacki plans return to tennis at US Open", image_url: null },
-  { id: 41, section: "news5", title: "Archaeologists find a 3,000-year-old sword so well preserved it's still gleaming", image_url: null },
-  { id: 42, section: "news5", title: "Archaeologists find a 3,000-year-old sword so well preserved it's still gleaming", image_url: null },
-  { id: 50, section: "news6", title: "Rep. Alexandria Ocasio-Cortez supports Biden's reelection bid", image_url: null },
-  { id: 51, section: "news6", title: "Rep. Alexandria Ocasio-Cortez supports Biden's reelection bid", image_url: null },
+  { id: 40, section: "news5", title: "Caroline Wozniacki plans return to tennis at US Open",
+     image_url: "https://media.cnn.com/api/v1/images/stellar/prod/230622161002-01-us-tourists-hot-commodity-restricted.jpg" },
+  { id: 41, section: "news5", title: "Archaeologists find a 3,000-year-old sword so well preserved it's still gleaming", 
+    image_url: "https://bloximages.newyork1.vip.townnews.com/kdrv.com/content/tncms/assets/v3/editorial/f/f3/ff384454-6d4c-528c-a9bf-b59a50279205/648c9f073a397.image.jpg?resize=751%2C500" },
+  { id: 42, section: "news5", title: "Archaeologists find a 3,000-year-old sword so well preserved it's still gleaming", 
+    image_url: "https://news.artnet.com/app/news-upload/2023/03/japanese-sword-3.webp" },
+  { id: 50, section: "news6", title: "Rep. Alexandria Ocasio-Cortez supports Biden's reelection bid", 
+    image_url: "https://media.cnn.com/api/v1/images/stellar/prod/230707160356-alexandria-ocasio-cortez-053123.jpg?c=original" },
+  { id: 51, section: "news6", title: "Rep. Alexandria Ocasio-Cortez supports Biden's reelection bid", 
+    image_url: "https://dims.apnews.com/dims4/default/4f5d293/2147483647/strip/true/crop/7479x4980+0+3/resize/820x546!/format/webp/quality/90/?url=https%3A%2F%2Fassets.apnews.com%2Ffb%2F4b%2Fb9fcb0d11926e6fa14009d294ce1%2F7436295568764e6d917742906b33f00e" },
 ];

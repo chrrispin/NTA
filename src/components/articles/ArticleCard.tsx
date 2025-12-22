@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { defaultArticles, PLACEHOLDER } from "../../data/defaultArticles";
+import { PLACEHOLDER } from "../../data/defaultArticles";
 import BadgeLive from "../shared/BadgeLive";
 
 const truncate = (text: string | undefined | null, len = 120) => {
@@ -15,10 +15,42 @@ interface ArticleCardProps {
 }
 
 const ArticleCard: React.FC<ArticleCardProps> = ({ variant = "default", className = "", articleIndex = 0 }) => {
-  // Hardcoded values - change these directly
-  const article = defaultArticles[articleIndex];
+  const [articles, setArticles] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchArticles = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch("/api/articles");
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setArticles(data);
+      } catch (error) {
+        console.error("Error fetching articles:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchArticles();
+  }, []);
+
+  if (loading) {
+    return (
+      <article className={`space-y-2 ${className}`}>
+        <div className="text-center py-8 text-gray-500 text-sm">Loading article...</div>
+      </article>
+    );
+  }
+
+  if (!articles[articleIndex]) return null;
+
+  const article = articles[articleIndex];
   
-  const { id, slug, title, summary, image_url, is_live } = article;
+  const { id, slug, title, summary, image_url, is_live, section } = article;
   const articleLink = `/article/${slug || id}`;
 
   // Featured variant (large card)
@@ -33,7 +65,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ variant = "default", classNam
               className="w-full h-full max-h-72 object-cover rounded hover:opacity-90 transition"
             />
           </Link>
-          {is_live && <BadgeLive />}
+          {is_live && section !== 'video' && <BadgeLive />}
         </div>
         <Link to={articleLink} className="font-bold text-lg hover:text-blue-600 transition block">
           {title}
@@ -123,7 +155,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ variant = "default", classNam
             className="w-full h-48 object-cover rounded hover:opacity-90 transition"
           />
         </Link>
-        {is_live && <BadgeLive />}
+        {is_live && section !== 'video' && <BadgeLive />}
       </div>
       <Link to={articleLink} className="font-bold text-lg hover:text-blue-600 transition block leading-snug">
         {truncate(title, 120)}

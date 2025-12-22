@@ -1,14 +1,37 @@
-import React from "react";
-import { defaultArticles, PLACEHOLDER } from "../../data/defaultArticles";
+import React, { useEffect } from "react";
+import { PLACEHOLDER } from "../../data/defaultArticles";
+import { usePaginatedArticles } from "../../hooks/usePaginatedArticles";
 
 const ArticleGrid: React.FC = () => {
+  const { articles, loading, loadingMore, error, hasMore, selectedSection, observerTarget, fetchArticles, loadMore, filterBySection } =
+    usePaginatedArticles({ initialLimit: 20, enableInfiniteScroll: true });
+
+  useEffect(() => {
+    fetchArticles(1, false);
+  }, []);
+
   // Hardcoded values - change these directly in the code
   const title = "Latest News";
-  const articles = defaultArticles;
   const variant: "default" | "featured" | "compact" | "video" | "audio" = "audio";
   const columns = 3;
   const showSeeMore = false;
   const className = "";
+
+  if (loading) {
+    return (
+      <section className={`space-y-4 ${className}`}>
+        <div className="text-center py-8 text-gray-500">Loading articles...</div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section className={`space-y-4 ${className}`}>
+        <div className="text-center py-8 text-red-500">Error: {error}</div>
+      </section>
+    );
+  }
 
   if (articles.length === 0) return null;
 
@@ -71,14 +94,22 @@ const ArticleGrid: React.FC = () => {
   // Grid layout for default, featured, and video variants
   return (
     <section className={`space-y-4 ${className}`}>
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between mb-4">
         <h2 className="text-xl font-bold">{title}</h2>
-        {showSeeMore && (
-          <span className="text-sm text-blue-600 hover:underline cursor-pointer">
-            See all
-          </span>
-        )}
+        <select
+          value={selectedSection || ""}
+          onChange={(e) => filterBySection(e.target.value || undefined)}
+          className="px-3 py-2 border border-gray-300 rounded hover:border-gray-400 text-sm"
+        >
+          <option value="">All Sections</option>
+          <option value="news1">News 1</option>
+          <option value="news4">Featured</option>
+          <option value="news5">News 5</option>
+          <option value="trending">Trending</option>
+          <option value="video">Videos</option>
+        </select>
       </div>
+
       <div className={`grid ${gridClass} gap-6`}>
         {articles.map((article, idx) => {
           // Make first item span 2 columns for featured variant
@@ -93,6 +124,25 @@ const ArticleGrid: React.FC = () => {
           );
         })}
       </div>
+
+      {/* Load More Button & Infinite Scroll Observer */}
+      <div ref={observerTarget} className="flex justify-center mt-8">
+        {hasMore && !loadingMore && (
+          <button
+            onClick={loadMore}
+            className="px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+          >
+            Load More
+          </button>
+        )}
+        {loadingMore && <div className="text-center text-gray-500">Loading more...</div>}
+      </div>
+
+      {error && (
+        <div className="text-center mt-4 text-red-500 text-sm">
+          Failed to load more articles
+        </div>
+      )}
     </section>
   );
 };

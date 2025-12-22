@@ -1,18 +1,38 @@
-import React from "react";
-import { defaultArticles, PLACEHOLDER } from "../../data/defaultArticles";
+import React, { useEffect } from "react";
+import { PLACEHOLDER } from "../../data/defaultArticles";
+import { usePaginatedArticles } from "../../hooks/usePaginatedArticles";
 
 const MoreNews: React.FC = () => {
-  // Hardcoded values - change these directly
-  const articles = defaultArticles;
-  const moreNews = articles.slice(8, 20);
+  const { articles, loading, loadingMore, error, hasMore, observerTarget, fetchArticles, loadMore } =
+    usePaginatedArticles({ initialLimit: 12, enableInfiniteScroll: true });
 
-  if (moreNews.length === 0) return null;
+  useEffect(() => {
+    fetchArticles(1, false);
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="lg:col-span-3 mt-10">
+        <div className="text-center py-8 text-gray-500">Loading more news...</div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="lg:col-span-3 mt-10">
+        <div className="text-center py-8 text-red-500">Error loading articles: {error}</div>
+      </div>
+    );
+  }
+
+  if (articles.length === 0) return null;
 
   return (
     <div className="lg:col-span-3 mt-10">
       <h2 className="text-xl font-bold mb-4">More News</h2>
       <div className="grid md:grid-cols-6 gap-6">
-        {moreNews.map((article) => (
+        {articles.map((article) => (
           <div key={article.id}>
             <img src={article.image_url ?? PLACEHOLDER} alt={article.title} className="w-full h-32 object-cover rounded" />
             <a href={`/article/${article.slug || article.id}`} className="font-semibold hover:text-blue-600 mt-2 block text-sm">
@@ -21,6 +41,25 @@ const MoreNews: React.FC = () => {
           </div>
         ))}
       </div>
+
+      {/* Infinite Scroll Observer Target & Load More Button Fallback */}
+      <div ref={observerTarget} className="flex justify-center mt-8">
+        {hasMore && !loadingMore && (
+          <button
+            onClick={loadMore}
+            className="px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+          >
+            Load More
+          </button>
+        )}
+        {loadingMore && <div className="text-center text-gray-500">Loading more...</div>}
+      </div>
+
+      {error && (
+        <div className="text-center mt-4 text-red-500 text-sm">
+          Failed to load more articles
+        </div>
+      )}
     </div>
   );
 };

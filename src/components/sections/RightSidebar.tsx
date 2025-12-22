@@ -1,6 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import SmallList from "../articles/SmallList";
-import { PLACEHOLDER, defaultArticles } from "../../data/defaultArticles";
+import SidebarImageList from "../articles/SidebarImageList";
+import VideoSection from "./VideoSection";
+import { PLACEHOLDER } from "../../data/defaultArticles";
+
+interface SubLink {
+  id: string;
+  title: string;
+  url?: string;
+  image_url?: string;
+}
+
+interface Article {
+  id: string;
+  title: string;
+  image_url?: string;
+  section: string;
+  isTrending?: boolean;
+  summary?: string;
+  subLinks?: SubLink[];
+}
 
 const truncate = (text: string | undefined | null, len = 120) => {
   if (!text) return "";
@@ -8,13 +27,43 @@ const truncate = (text: string | undefined | null, len = 120) => {
 };
 
 const RightSidebar: React.FC = () => {
-  // Hardcoded values - change these directly
-  const articles = defaultArticles;
+  const [articles, setArticles] = useState<Article[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchArticles = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch("/api/articles");
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setArticles(data);
+      } catch (error) {
+        console.error("Error fetching articles:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchArticles();
+  }, []);
+
   const news1 = articles.filter((a) => a.section === "news1");
   const news2 = articles.filter((a) => a.section === "news2");
   const news3 = articles.filter((a) => a.section === "news3");
   const trendingFlagged = articles.filter((a) => a.isTrending);
   const trending = (trendingFlagged.length ? trendingFlagged : articles).slice(0, 6);
+
+  if (loading) {
+    return (
+      <aside className="space-y-6">
+        <div className="text-center py-8 text-gray-500">Loading articles...</div>
+      </aside>
+    );
+  }
+
   return (
     <aside className="space-y-6">
       <section id="news2" className="space-y-4">
@@ -29,7 +78,7 @@ const RightSidebar: React.FC = () => {
                 {a.subLinks.map((s) => (
                   <li className="flex items-start gap-2" key={s.id}>
                     {/* small thumb for subLinks if possible - use placeholder */}
-                    <img src={PLACEHOLDER} alt={s.title} className="w-16 h-10 object-cover rounded" />
+                    <img src={s.image_url ?? PLACEHOLDER} alt={s.title} className="w-16 h-10 object-cover rounded" />
                     <a href={s.url ?? "#"} className="hover:underline text-sm">
                       {s.title}
                     </a>
@@ -47,7 +96,7 @@ const RightSidebar: React.FC = () => {
               Top Stories
             </a>
             <div className="grid md:grid-cols-2 gap-4">
-              {(trending.length ? trending : defaultArticles.slice(0, 4)).map((a, idx) => (
+              {(trending.length ? trending : articles.slice(0, 4)).map((a, idx) => (
                 <div key={`fallback-${a.id}-${idx}`} className="space-y-2">
                   <img
                     src={a.image_url ?? PLACEHOLDER}
@@ -76,7 +125,7 @@ const RightSidebar: React.FC = () => {
               <ul className="list-disc pl-5 text-sm mt-1">
                 {a.subLinks.map((s) => (
                   <li className="flex items-start gap-2" key={s.id}>
-                    <img src={PLACEHOLDER} alt={s.title} className="w-12 h-8 object-cover rounded" />
+                    <img src={s.image_url ?? PLACEHOLDER} alt={s.title} className="w-12 h-8 object-cover rounded" />
                     <a href={s.url ?? "#"} className="hover:underline text-sm">
                       {s.title}
                     </a>
@@ -89,6 +138,8 @@ const RightSidebar: React.FC = () => {
       </section>
 
       {/* Additional small blocks */}
+      <SidebarImageList />
+      <VideoSection />
       <SmallList />
       {/* <SmallList
         title="Photos You Should See"

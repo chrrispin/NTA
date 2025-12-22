@@ -1,11 +1,39 @@
-import React from "react";
-import { defaultArticles } from "../../data/defaultArticles";
+import React, { useState, useEffect } from "react";
 
 const News7Section: React.FC = () => {
-  // Hardcoded values - change these directly
-  const articles = defaultArticles;
+  const [articles, setArticles] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchArticles = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch("/api/articles");
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setArticles(data);
+      } catch (error) {
+        console.error("Error fetching articles:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchArticles();
+  }, []);
+
   const news7 = articles.filter((a) => a.section === "news7");
   
+  if (loading) {
+    return (
+      <section id="news7" className="lg:col-span-3 mt-6 space-y-6">
+        <div className="text-center py-8 text-gray-500">Loading articles...</div>
+      </section>
+    );
+  }
+
   if (news7.length === 0) return null;
 
   return (
