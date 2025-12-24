@@ -15,7 +15,7 @@ const News4Section: React.FC = () => {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
-        setArticles(data);
+        setArticles(data.articles || []);
       } catch (error) {
         console.error("Error fetching articles:", error);
       } finally {
@@ -44,7 +44,7 @@ const News4Section: React.FC = () => {
         {news4.map((a) => (
           <div key={a.id} className="relative">
             <img src={a.image_url ?? PLACEHOLDER} alt={a.title} className="rounded object-cover w-full" />
-            {a.is_live && a.section !== 'video' && <BadgeLive />}
+            {/* {a.is_live && a.section !== 'video' && <BadgeLive />} */}
             <a href="#" className="font-bold block hover:underline mt-2">
               {a.title}
             </a>

@@ -7,6 +7,7 @@ interface Article {
   summary?: string;
   image_url?: string;
   slug?: string;
+  section?: string;
 }
 
 const truncate = (text: string | undefined, maxLength: number): string => {
@@ -29,7 +30,7 @@ export default function SmallList() {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
-        setArticles(data);
+        setArticles(data.articles || []);
       } catch (err) {
         console.error("Error fetching articles:", err);
         setError("Failed to load articles");
@@ -41,8 +42,8 @@ export default function SmallList() {
     fetchArticles();
   }, []);
 
-  // Exclude news2 to avoid duplication with sidebar's news2 block
-  const filtered = articles.filter((a) => a.section !== 'news2');
+  // Exclude news2 and news3 to avoid duplication with sidebar's news sections
+  const filtered = articles.filter((a) => !['news1', 'news2', 'news3'].includes(a.section || ''));
 
   // Split articles: first one is main, rest are side articles
   const allArticles = filtered.slice(0, 6);

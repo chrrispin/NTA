@@ -36,8 +36,9 @@ export const fetchArticles = async (
   params?: { section?: string; page?: string; limit?: number; offset?: number }
 ): Promise<Article[]> => {
   try {
-    const response = await API.get<Article[]>('/articles', { params }); // GET request to /api/articles
-    return response.data;
+    const response = await API.get<{ articles: Article[] }>('/articles', { params }); // GET request to /api/articles
+    // Backend returns { articles: [...], page, totalItems, ... }
+    return response.data.articles || [];
   } catch (error) {
     console.error('Error fetching articles:', error);
     return [];

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { PLACEHOLDER } from "../../data/defaultArticles";
 import BadgeLive from "../shared/BadgeLive";
+import TradingYouTubeSection from "./TradingYouTubeSection";
+import AfricanTrendsSection from "./AfricanTrendsSection";
 
 interface SubLink {
   id: string | number;
@@ -39,7 +41,7 @@ const LeftMainSection: React.FC = () => {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
-        setArticles(data);
+        setArticles(data.articles || []);
       } catch (error) {
         console.error("Error fetching articles:", error);
       } finally {
@@ -237,6 +239,10 @@ const LeftMainSection: React.FC = () => {
           </div>
         ))}
       </article>
+
+      <TradingYouTubeSection />
+
+      <AfricanTrendsSection />
     </section>
   );
 };

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import SmallList from "../articles/SmallList";
 import SidebarImageList from "../articles/SidebarImageList";
 import VideoSection from "./VideoSection";
+import MiniLeftSection from "./MiniLeftSection";
 import { PLACEHOLDER } from "../../data/defaultArticles";
 
 interface SubLink {
@@ -39,7 +40,7 @@ const RightSidebar: React.FC = () => {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
-        setArticles(data);
+        setArticles(data.articles || []);
       } catch (error) {
         console.error("Error fetching articles:", error);
       } finally {
@@ -113,6 +114,8 @@ const RightSidebar: React.FC = () => {
           </article>
         )}
       </section>
+
+      <MiniLeftSection />
 
       <section id="news3" className="space-y-4">
         {news3.map((a) => (

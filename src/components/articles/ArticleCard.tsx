@@ -27,7 +27,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ variant = "default", classNam
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
-        setArticles(data);
+        setArticles(data.articles || []);
       } catch (error) {
         console.error("Error fetching articles:", error);
       } finally {

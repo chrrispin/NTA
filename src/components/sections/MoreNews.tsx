@@ -4,11 +4,11 @@ import { usePaginatedArticles } from "../../hooks/usePaginatedArticles";
 
 const MoreNews: React.FC = () => {
   const { articles, loading, loadingMore, error, hasMore, observerTarget, fetchArticles, loadMore } =
-    usePaginatedArticles({ initialLimit: 12, enableInfiniteScroll: true });
+    usePaginatedArticles({ initialLimit: 12, enableInfiniteScroll: true, section: "more_news" });
 
   useEffect(() => {
     fetchArticles(1, false);
-  }, []);
+  }, [fetchArticles]);
 
   if (loading) {
     return (
