@@ -29,7 +29,7 @@ export interface ArticleInput {
 
 // Base URL of your backend
 const API = axios.create({
-  baseURL: 'http://localhost:5000/api', // change this if your backend URL is different
+  baseURL: 'https://nta-backend-re6q.onrender.com/api', // change this if your backend URL is different
 });
 
 export const fetchArticles = async (
