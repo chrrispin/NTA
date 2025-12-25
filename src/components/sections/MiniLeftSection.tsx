@@ -52,7 +52,7 @@ const MiniLeftSection: React.FC = () => {
 
   return (
     <section className="space-y-3">
-      <h3 className="text-sm font-semibold text-red-500">E-News</h3>
+      <h3 className="text-sm font-bold text-xl text-red-500">E-News</h3>
       <div className="space-y-2">
         {articles.map((article) => (
           <article key={article.id} className="flex gap-2 items-start p-1 hover:bg-gray-50 rounded transition">

@@ -42,8 +42,8 @@ export default function SmallList() {
     fetchArticles();
   }, []);
 
-  // Exclude news2 and news3 to avoid duplication with sidebar's news sections
-  const filtered = articles.filter((a) => !['news1', 'news2', 'news3'].includes(a.section || ''));
+  // Exclude news2, news3, and video (YouTube Trads) to avoid duplication with other sections
+  const filtered = articles.filter((a) => !['news1', 'news2', 'news3', 'video'].includes(a.section || ''));
 
   // Split articles: first one is main, rest are side articles
   const allArticles = filtered.slice(0, 6);

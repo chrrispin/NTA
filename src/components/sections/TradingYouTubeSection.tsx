@@ -12,10 +12,6 @@ interface Article {
   updated_at?: string;
 }
 
-const truncate = (text: string | undefined | null, len = 80) => {
-  if (!text) return "";
-  return text.length > len ? text.slice(0, len).trim() + "…" : text;
-};
 
 // Extract YouTube video ID from URL
 const getYouTubeId = (url: string | undefined): string | null => {
@@ -88,7 +84,7 @@ const TradingYouTubeSection: React.FC = () => {
 
   return (
     <section className="space-y-4">
-      <h3 className="text-base font-semibold text-red-500">Trading YouTube</h3>
+      <h3 className="text-base font-bold text-xl text-red-500">YouTube Trads</h3>
       
       {/* Featured Video */}
       {featuredYoutubeId && (

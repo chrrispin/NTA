@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { PLACEHOLDER } from "../../data/defaultArticles";
+import { fetchArticles } from "../../services/api";
 
 type Props = {
   imageUrl?: string;
@@ -20,15 +21,11 @@ const SampleArticleCard: React.FC<Props> = ({
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchArticles = async () => {
+    const load = async () => {
       try {
         setLoading(true);
-        const response = await fetch("/api/articles");
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
-        setArticles(data.articles || []);
+        const data = await fetchArticles();
+        setArticles(data || []);
       } catch (error) {
         console.error("Error fetching articles:", error);
       } finally {
@@ -36,7 +33,7 @@ const SampleArticleCard: React.FC<Props> = ({
       }
     };
 
-    fetchArticles();
+    load();
   }, []);
 
   if (loading) {
@@ -54,12 +51,18 @@ const SampleArticleCard: React.FC<Props> = ({
   const displayExcerpt = excerpt ?? article.summary;
   const displayImage = imageUrl ?? article.image_url;
   const displayDate = dateLabel ?? new Date(article.created_at || Date.now()).toLocaleDateString();
+  const isVideoUrl = (url?: string) =>
+    !!url && (/^data:video\//.test(url) || /(\.mp4|\.webm|\.ogg)(\?|$)/i.test(url));
   return (
     <section className="lg:col-span-3 max-w-3xl mx-auto mt-6">
       <div className="flex flex-col md:flex-row bg-white rounded-lg shadow overflow-hidden">
         {/* Image on the left */}
         <div className="md:w-1/3">
-          <img src={displayImage ?? PLACEHOLDER} alt={displayTitle} className="w-full h-full object-cover" />
+          {isVideoUrl(displayImage) ? (
+            <video src={displayImage} controls className="w-full h-full object-cover" />
+          ) : (
+            <img src={displayImage ?? PLACEHOLDER} alt={displayTitle} className="w-full h-full object-cover" />
+          )}
         </div>
 
         {/* Content on the right */}

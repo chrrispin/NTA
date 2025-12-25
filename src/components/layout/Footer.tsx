@@ -1,6 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
+import SocialLinks from "../shared/SocialLinks";
 
 const Footer: React.FC = () => {
+  const [email, setEmail] = useState("");
+  const [feedback, setFeedback] = useState<string | null>(null);
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email.trim()) {
+      setFeedback("Please enter a valid email.");
+      return;
+    }
+    setFeedback("Thanks for subscribing to our newsletter!");
+    setEmail("");
+  };
+
   return (
     <footer className="bg-black text-white mt-10 px-6 py-10">
       {/* Top Section */}
@@ -103,29 +117,36 @@ const Footer: React.FC = () => {
         </div>
       </div>
 
-      {/* Search & Socials */}
-      <div className="max-w-7xl mx-auto mt-10 border-t border-gray-700 pt-6 flex flex-col md:flex-row justify-between gap-6">
-        <form className="flex items-center gap-2">
-          <input
-            type="text"
-            placeholder="Search New Time Africa..."
-            className="border border-gray-600 p-2 rounded w-56 text-black placeholder-gray-500"
-          />
-          <button
-            type="submit"
-            className="px-3 py-2 bg-red-600 text-white font-bold rounded hover:bg-red-700 transition"
-          >
-            Search →
-          </button>
-        </form>
+      {/* Social Icons Row */}
+      <div className="max-w-7xl mx-auto mt-10 border-t border-gray-700 pt-6 pb-4 flex justify-center">
+        <SocialLinks />
+      </div>
+
+      {/* Subscribe & Links */}
+      <div className="max-w-7xl mx-auto mt-4 border-t border-gray-700 pt-6 flex flex-col md:flex-row justify-between gap-6">
+        <div className="flex flex-col w-full md:w-auto">
+          <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row items-start sm:items-center gap-2">
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="your@example.com"
+              className="border border-gray-600 p-2 rounded w-full sm:w-56 text-gray-500 placeholder-gray-500"
+              aria-label="Email address"
+            />
+            <button
+              type="submit"
+              className="px-3 py-2 bg-red-600 text-white font-bold rounded hover:bg-red-700 transition w-full sm:w-auto"
+            >
+              Subscribe
+            </button>
+          </form>
+          {feedback && (
+            <p className="mt-2 text-sm text-green-400">{feedback}</p>
+          )}
+        </div>
 
         <div className="flex flex-col md:flex-row md:items-center gap-4 text-sm justify-end">
-          <div className="flex items-center gap-3 text-gray-300">
-            <a href="#" aria-label="Facebook" className="hover:text-blue-500"><i className="bi bi-facebook"></i></a>
-            <a href="#" aria-label="Twitter" className="hover:text-blue-500"><i className="bi bi-twitter"></i></a>
-            <a href="#" aria-label="Instagram" className="hover:text-blue-500"><i className="bi bi-instagram"></i></a>
-          </div>
-
           <div className="flex flex-wrap gap-4 text-gray-400">
             <a href="#" className="hover:underline hover:text-white">Terms of Use</a>
             <a href="#" className="hover:underline hover:text-white">Privacy Policy</a>

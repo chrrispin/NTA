@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, AlertCircle, Search } from "lucide-react";
+import { Menu, X, AlertCircle } from "lucide-react";
+import SearchBar from "../shared/SearchBar";
 
 interface Ad {
   id: number;
@@ -211,9 +212,7 @@ const Navbar: React.FC = () => {
                 <span className="w-2 h-2 bg-red-500 rounded-full"></span>
               </a>
 
-              <button className="text-gray-600 hover:text-blue-600 transition">
-                <Search className="w-5 h-5" />
-              </button>
+              <SearchBar />
 
               <button className="px-4 py-2 border rounded-md hover:bg-gray-100 transition font-bold">
                 Log In

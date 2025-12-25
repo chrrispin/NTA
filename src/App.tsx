@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom"; // ✅ import routing
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import Header from "./components/layout/Header";
+import CookiePreferences from "./components/shared/CookiePreferences";
 
 // Import pages
 import Home from "./pages/Home";
@@ -18,6 +19,7 @@ import Health from "./pages/Health";
 import Entertainment from "./pages/Entertainment";
 import Business from "./pages/Business";
 import ArticleDetail from "./pages/ArticleDetail";
+import CookiePolicy from "./pages/CookiePolicy";
 
 export default function App() {
   return (
@@ -41,10 +43,12 @@ export default function App() {
           <Route path="/travel" element={<Travel />} />
           <Route path="/video" element={<Video />} />
           <Route path="/article/:slug" element={<ArticleDetail />} />
+          <Route path="/cookie-policy" element={<CookiePolicy />} />
         </Routes>
       </main>
 
       <Footer />
+      <CookiePreferences />
     </div>
   );
 }
