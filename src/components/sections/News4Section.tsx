@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { PLACEHOLDER } from "../../data/defaultArticles";
-import BadgeLive from "../shared/BadgeLive";
 
 const News4Section: React.FC = () => {
   const [articles, setArticles] = useState<any[]>([]);

@@ -1,6 +1,8 @@
 // src/services/api.ts
 import axios from 'axios';
 
+export const API_BASE_URL = 'https://nta-backend-re6q.onrender.com/api';
+
 export interface Article {
   id: number;
   section: string;

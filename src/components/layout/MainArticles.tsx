@@ -12,7 +12,11 @@ import HotNews from "../sections/HotNews";
 import AudioCarousel from "../sections/AudioCarousel";
 import MoreNews from "../sections/MoreNews";
 
-const MainArticles: React.FC = () => {
+type MainArticlesProps = {
+  pageFilter?: string;
+};
+
+const MainArticles: React.FC<MainArticlesProps> = () => {
   return (
     <main className="px-4 py-6 max-w-7xl mx-auto grid gap-6 grid-cols-1 lg:grid-cols-3">
       {/* Left - main articles wide */}
