@@ -1,4 +1,5 @@
 import { useState, useCallback, useRef, useEffect } from "react";
+import { API_BASE_URL } from "../services/api";
 
 interface UsePaginatedArticlesOptions {
   initialLimit?: number;
@@ -44,7 +45,7 @@ export const usePaginatedArticles = ({
           params.append("section", selectedSection);
         }
 
-        const response = await fetch(`/api/articles?${params.toString()}`);
+        const response = await fetch(`${API_BASE_URL}/articles?${params.toString()}`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
