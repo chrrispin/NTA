@@ -95,9 +95,9 @@ const TradingYouTubeSection: React.FC = () => {
       <h3 className="text-base font-bold text-xl text-red-500">YouTube Trads</h3>
       {/* Featured Video */}
       {featuredYoutubeId && (
-        <article className="flex gap-4 items-start">
+        <article className="flex flex-col md:flex-row gap-4 items-start">
           {/* YouTube Video Player - Large Size with Autoplay */}
-          <div className="flex-shrink-0 w-96">
+          <div className="w-full md:w-96">
             <div className="aspect-video rounded overflow-hidden">
               <iframe
                 width="100%"
@@ -112,19 +112,20 @@ const TradingYouTubeSection: React.FC = () => {
             </div>
           </div>
 
-          {/* Red Divider Line */}
-          <div className="w-1.5 bg-red-600 h-54 flex-shrink-0 rounded"></div>
+          {/* Red Divider Line only on md+ */}
+          <div className="hidden md:block w-1.5 bg-red-600 h-54 flex-shrink-0 rounded"></div>
 
-          {/* Description */}
-          <div className="flex-1 min-w-0">
+          {/* Title and Description */}
+          <div className="w-full md:flex-1 min-w-0 mt-2 md:mt-0">
             <Link
               to={`/article/${featuredArticle.slug || featuredArticle.id}`}
-              className="font-semibold text-sm hover:text-blue-600 transition block leading-tight mb-2"
+              className="font-semibold text-sm hover:text-blue-600 transition block leading-tight mb-2 text-center md:text-left"
             >
               {featuredArticle.title}
             </Link>
+            {/* Show description only on md and up */}
             {featuredArticle.summary && (
-              <p className="text-xs text-gray-600 leading-relaxed">
+              <p className="hidden md:block text-xs text-gray-600 leading-relaxed">
                 {featuredArticle.summary}
               </p>
             )}
