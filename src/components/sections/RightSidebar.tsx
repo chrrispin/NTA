@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { API_BASE_URL } from "../../services/api";
 import SmallList from "../articles/SmallList";
 import SidebarImageList from "../articles/SidebarImageList";
 import VideoSection from "./VideoSection";
@@ -35,7 +36,7 @@ const RightSidebar: React.FC = () => {
     const fetchArticles = async () => {
       try {
         setLoading(true);
-        const response = await fetch("/api/articles");
+        const response = await fetch(`${API_BASE_URL}/articles`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }

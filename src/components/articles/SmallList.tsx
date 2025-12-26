@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { API_BASE_URL } from "../../services/api";
 import { Link } from 'react-router-dom';
 
 interface Article {
@@ -25,7 +26,7 @@ export default function SmallList() {
       try {
         setLoading(true);
         setError(null);
-        const response = await fetch("/api/articles");
+        const response = await fetch(`${API_BASE_URL}/articles`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }

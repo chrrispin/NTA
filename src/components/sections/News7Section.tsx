@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { API_BASE_URL } from "../../services/api";
 
 const News7Section: React.FC = () => {
   const [articles, setArticles] = useState<any[]>([]);
@@ -8,7 +9,7 @@ const News7Section: React.FC = () => {
     const fetchArticles = async () => {
       try {
         setLoading(true);
-        const response = await fetch("/api/articles");
+        const response = await fetch(`${API_BASE_URL}/articles`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }

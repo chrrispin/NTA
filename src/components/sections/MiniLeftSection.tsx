@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { API_BASE_URL } from "../../services/api";
 import { Link } from "react-router-dom";
 import { PLACEHOLDER } from "../../data/defaultArticles";
 
@@ -24,7 +25,7 @@ const MiniLeftSection: React.FC = () => {
     const fetchArticles = async () => {
       try {
         setLoading(true);
-        const response = await fetch("/api/articles?section=mini-left&limit=4");
+        const response = await fetch(`${API_BASE_URL}/articles?section=mini-left&limit=4`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
