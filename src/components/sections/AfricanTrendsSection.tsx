@@ -82,7 +82,7 @@ const AfricanTrendsSection: React.FC = () => {
             <img
               src={mainArticle.image_url ?? PLACEHOLDER}
               alt={mainArticle.title}
-              className="w-64 h-48 object-cover rounded hover:opacity-90 transition"
+              className="w-full max-w-xs h-40 sm:w-64 sm:h-48 object-cover rounded hover:opacity-90 transition"
             />
           </Link>
 

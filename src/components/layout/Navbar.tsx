@@ -214,7 +214,10 @@ const Navbar: React.FC = () => {
 
               <SearchBar />
 
-              <button className="px-4 py-2 border rounded-md hover:bg-gray-100 transition font-bold">
+              <button
+                className="px-2 py-1 md:px-4 md:py-2 border rounded-md hover:bg-gray-100 transition font-bold text-sm md:text-base"
+                style={{ minWidth: 64 }}
+              >
                 Log In
               </button>
             </div>
