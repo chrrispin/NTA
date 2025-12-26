@@ -76,7 +76,14 @@ const TradingYouTubeSection: React.FC = () => {
     );
   }
 
-  if (!articles.length) return null;
+  if (!articles.length) {
+    return (
+      <section className="space-y-4 min-h-[140px] bg-white border-b border-gray-200">
+        <h3 className="text-base font-bold text-xl text-red-500">YouTube Trads</h3>
+        {/* Optionally, add a placeholder or leave empty */}
+      </section>
+    );
+  }
 
   // First article is featured, rest are in horizontal list
   const featuredArticle = articles[0];
@@ -84,9 +91,8 @@ const TradingYouTubeSection: React.FC = () => {
   const featuredYoutubeId = getYouTubeId(featuredArticle.image_url);
 
   return (
-    <section className="space-y-4">
+    <section className="space-y-4 min-h-[140px] bg-white border-b border-gray-200">
       <h3 className="text-base font-bold text-xl text-red-500">YouTube Trads</h3>
-      
       {/* Featured Video */}
       {featuredYoutubeId && (
         <article className="flex gap-4 items-start">
@@ -132,7 +138,6 @@ const TradingYouTubeSection: React.FC = () => {
           <div className="flex gap-3 pb-2">
             {otherArticles.map((article) => {
               const youtubeId = getYouTubeId(article.image_url);
-              
               return youtubeId ? (
                 <Link
                   key={article.id}

@@ -73,7 +73,7 @@ const AfricanTrendsSection: React.FC = () => {
         </Link>
 
         {/* Image and Description Layout */}
-        <div className="flex gap-4">
+        <div className="flex flex-col sm:flex-row gap-4">
           {/* Image on the left */}
           <Link
             to={`/article/${mainArticle.slug || mainArticle.id}`}
