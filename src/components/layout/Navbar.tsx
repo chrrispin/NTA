@@ -214,8 +214,9 @@ const Navbar: React.FC = () => {
 
               <SearchBar />
 
+              {/* Log In button: only visible on md+ */}
               <button
-                className="px-2 py-1 md:px-4 md:py-2 border rounded-md hover:bg-gray-100 transition font-bold text-sm md:text-base"
+                className="hidden md:inline-flex px-2 py-1 md:px-4 md:py-2 border rounded-md hover:bg-gray-100 transition font-bold text-sm md:text-base"
                 style={{ minWidth: 64 }}
               >
                 Log In
@@ -241,7 +242,7 @@ const Navbar: React.FC = () => {
             <X className="w-6 h-6" />
           </button>
 
-
+          {/* Mobile nav links */}
           {[
             "Home",
             "Africa",
@@ -265,6 +266,14 @@ const Navbar: React.FC = () => {
               {item}
             </Link>
           ))}
+
+          {/* Log In button for mobile menu */}
+          <button
+            className="w-full mt-4 px-4 py-2 border rounded-md hover:bg-gray-100 transition font-bold text-base text-center"
+            onClick={() => setMenuOpen(false)}
+          >
+            Log In
+          </button>
         </div>
       </div>
 
