@@ -143,7 +143,7 @@ const LeftMainSection: React.FC = () => {
       </article>
 
       {/* SArticle list / stacked items */}
-      <article className="SArticle space-y-3 text-green-500">
+      {/* <article className="SArticle space-y-3 text-green-500">
         {news1.slice(3).map((a) => (
           <div key={a.id} className="space-y-3">
             <img src={a.image_url ?? PLACEHOLDER} alt={a.title} className="w-full h-150 md:w-170 rounded object-cover" />
@@ -170,9 +170,48 @@ const LeftMainSection: React.FC = () => {
             ) : null}
           </div>
         ))}
-      </article>
+      </article> */}
 
-      <article className="SArticle space-y-4 text-green-500">
+      <article className="SArticle space-y-4 text-green-500 ">
+  {news1.length > 3 && (() => {
+    const latest = news1[news1.length - 1];
+    return (
+      <div key={latest.id} className="flex gap-4 items-start">
+        <img
+          src={latest.image_url ?? PLACEHOLDER}
+          alt={latest.title}
+          className="w-36 h-24 md:w-60 md:h-50 rounded object-cover flex-shrink-0"
+        />
+        <div className="space-y-2">
+          <a href="#" className="font-bold hover:underline block ">
+            {latest.title}
+          </a>
+          {(latest.summary || latest.subLinks?.[0]?.title) && (
+            <p className=" text-sm mt-auto text-gray-700">
+              {truncate(latest.summary ?? latest.subLinks?.[0]?.title ?? "", 600)}
+            </p>
+          )}
+          {latest.subLinks?.length ? (
+            <ul className="list-disc pl-5 text-sm space-y-1">
+              {latest.subLinks.map((s) => (
+                <li key={s.id}>
+                  {s.url ? (
+                    <a href={s.url} target="_blank" rel="noopener" className="hover:underline">
+                      {s.title}
+                    </a>
+                  ) : (
+                    <span>{s.title}</span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          ) : null}
+        </div>
+      </div>
+    );
+  })()}
+</article>
+      {/* <article className="SArticle space-y-4 text-green-500">
         {news1.slice(3).map((a) => (
           <div key={a.id} className="flex gap-4 items-start">
             <img
@@ -205,41 +244,7 @@ const LeftMainSection: React.FC = () => {
             </div>
           </div>
         ))}
-      </article>
-      <article className="SArticle space-y-4 text-green-500">
-        {news1.slice(3).map((a) => (
-          <div key={a.id} className="flex gap-4 items-start">
-            <img
-              src={a.image_url ?? PLACEHOLDER}
-              alt={a.title}
-              className="w-36 h-24 md:w-50 md:h-50 rounded object-cover flex-shrink-0"
-            />
-            <div className="space-y-2">
-              <a href="#" className="font-bold hover:underline block mt-20">
-                {a.title}
-              </a>
-              {(a.summary || a.subLinks?.[0]?.title) && (
-                <p className=" text-sm text-gray-700">{truncate(a.summary ?? a.subLinks?.[0]?.title ?? "", 140)}</p>
-              )}
-              {a.subLinks?.length ? (
-                <ul className="list-disc pl-5 text-sm space-y-1">
-                  {a.subLinks.map((s) => (
-                    <li key={s.id}>
-                      {s.url ? (
-                        <a href={s.url} target="_blank" rel="noopener" className="hover:underline">
-                          {s.title}
-                        </a>
-                      ) : (
-                        <span>{s.title}</span>
-                      )}
-                    </li>
-                  ))}
-                </ul>
-              ) : null}
-            </div>
-          </div>
-        ))}
-      </article>
+      </article> */}
 
       <TradingYouTubeSection />
 
