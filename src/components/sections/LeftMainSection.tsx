@@ -176,18 +176,18 @@ const LeftMainSection: React.FC = () => {
   {news1.length > 3 && (() => {
     const latest = news1[news1.length - 1];
     return (
-      <div key={latest.id} className="flex gap-4 items-start">
+      <div key={latest.id} className="flex flex-col gap-3 md:flex-row md:items-start">
         <img
           src={latest.image_url ?? PLACEHOLDER}
           alt={latest.title}
-          className="w-36 h-24 md:w-60 md:h-50 rounded object-cover flex-shrink-0"
+          className="w-full h-auto rounded object-cover md:w-60 md:h-50 md:flex-shrink-0"
         />
-        <div className="space-y-2">
-          <a href="#" className="font-bold hover:underline block ">
+        <div className="space-y-2 w-full">
+          <a href="#" className="font-bold hover:underline block">
             {latest.title}
           </a>
           {(latest.summary || latest.subLinks?.[0]?.title) && (
-            <p className=" text-sm mt-auto text-gray-700">
+            <p className="text-sm text-gray-700">
               {truncate(latest.summary ?? latest.subLinks?.[0]?.title ?? "", 600)}
             </p>
           )}

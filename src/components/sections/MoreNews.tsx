@@ -33,11 +33,37 @@ const MoreNews: React.FC = () => {
       <h2 className="text-xl font-bold mb-4">More News</h2>
       <div className="grid md:grid-cols-6 gap-6">
         {articles.map((article) => (
-          <div key={article.id}>
-            <img src={article.image_url ?? PLACEHOLDER} alt={article.title} className="w-full h-32 object-cover rounded" />
-            <a href={`/article/${article.slug || article.id}`} className="font-semibold hover:text-blue-600 mt-2 block text-sm">
+          <div key={article.id} className="flex flex-col gap-2">
+            <div className="relative">
+              <img
+                src={article.image_url ?? PLACEHOLDER}
+                alt={article.title}
+                className="w-full h-32 object-cover rounded"
+              />
+              {/* {article.is_live && (
+                <span className="absolute top-2 left-2 bg-red-600 text-white text-2xs font-semibold px-2 py-1 rounded">
+                  LIVE
+                </span>
+              )} */}
+            </div>
+
+            <div className="text-xs uppercase text-gray-500 tracking-wide">
+              {article.section || "News"}
+            </div>
+
+            <a
+              href={`/article/${article.id}`}
+              className="font-semibold hover:text-blue-600 text-sm leading-snug line-clamp-2"
+              onClick={() => console.log('🔗 Clicking article:', article.id, article.slug, article.title)}
+            >
               {article.title}
             </a>
+
+            {article.summary && (
+              <p className="text-xs text-gray-600 leading-snug line-clamp-2 md:line-clamp-3">
+                {article.summary}
+              </p>
+            )}
           </div>
         ))}
       </div>
